@@ -12,19 +12,15 @@ import com.fst.bazaar.entity.User;
 import com.fst.bazaar.repo.RoleRepo;
 import com.fst.bazaar.repo.UserRepo;
 
+import lombok.AllArgsConstructor;
+
 @Service
 @Transactional
+@AllArgsConstructor
 public class UserServiceImplementation implements UserService {
-
 	private final UserRepo userRepo;
 	private final RoleRepo roleRepo;
 	private final PasswordEncoder passwordEncoder;
-
-	public UserServiceImplementation(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
-		this.userRepo = userRepo;
-		this.roleRepo = roleRepo;
-		this.passwordEncoder = passwordEncoder;
-	}
 
 	@Override
 	public User findByEmail(String email) {
@@ -33,7 +29,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public User findById(int userId) {
-		return userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User id "+userId+" not found"));
+		return userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User id " + userId + " not found"));
 	}
 
 	@Override
