@@ -9,24 +9,24 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.fst.bazaar.service.RoleService;
-import com.fst.bazaar.service.UserService;
 
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest
 @Rollback(value = false)
 @ActiveProfiles("test")
 class RoleServiceTest {
+	@Autowired
+	RoleService roleService;
 
-	@Autowired RoleService roleService;
-
-	@Test void testFillRoles() {
+	@Test
+	void testFillRoles() {
 		roleService.fillRoles();
 		Assertions.assertThat(roleService.findAll()).size().isEqualTo(4);
 	}
 
-	@Test void shouldDeleteAllRoles() {
-
+	@Test
+	void shouldDeleteAllRoles() {
 		roleService.deleteAll();
-		Assertions.assertThat(roleService.findAll()).size().isLessThan(1);
+		Assertions.assertThat(roleService.findAll()).size().isNotPositive();
 	}
 }
