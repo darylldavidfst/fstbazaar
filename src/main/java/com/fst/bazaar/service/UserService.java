@@ -8,18 +8,11 @@ import com.fst.bazaar.entity.User;
 
 @Service
 public interface UserService {
-
 	User findByEmail(String email);
-
 	User findById(int userId);
-
 	void saveRole(String name, String description);
-
 	void saveUser(User rootUser);
-
 	void addRoleToUser(String username, String roleName);
-
 	void deleteAll();
-
 	List<User> findAll();
 }
