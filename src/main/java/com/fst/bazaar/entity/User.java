@@ -1,6 +1,5 @@
 package com.fst.bazaar.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -15,21 +14,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "user")
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
 public class User {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -41,7 +33,7 @@ public class User {
 	private String email;
 
 	@Column(name = "enabled")
-	private int enabled;
+	private boolean enabled;
 
 	@NotBlank(message = "Firstname is required")
 	@Size(min = 2, max = 45, message = "Firstname should be 2-45 characters")
@@ -62,50 +54,5 @@ public class User {
 	private String photo;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Role> roles = new HashSet<>();
-
-	public User id(int id) {
-		this.id = id;
-		return this;
-	}
-
-	public User email(String email) {
-		this.email = email;
-		return this;
-	}
-
-	public User enable() {
-		this.enabled = 1;
-		return this;
-	}
-
-	public User disable() {
-		this.enabled = 0;
-		return this;
-	}
-
-	public User firstName(String fname) {
-		firstName = fname;
-		return this;
-	}
-
-	public User lastName(String lname) {
-		lastName = lname;
-		return this;
-	}
-
-	public User password(String password) {
-		this.password = password;
-		return this;
-	}
-
-	public User photo(String photo) {
-		this.photo = photo;
-		return this;
-	}
-
-	public User addRole(Role role) {
-		roles.add(role);
-		return this;
-	}
+	private Set<Role> roles;
 }
