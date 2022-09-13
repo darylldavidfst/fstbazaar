@@ -8,9 +8,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.webappdemo.www.entity.Role;
-import com.webappdemo.www.entity.Roles;
-import com.webappdemo.www.repo.RoleRepo;
+import com.fst.bazaar.entity.Role;
+import com.fst.bazaar.entity.Roles;
+import com.fst.bazaar.repo.RoleRepo;
 
 @Service
 @Transactional
@@ -39,7 +39,10 @@ public class RoleServiceImplementation implements RoleService {
 	}
 
 	@Override public void fillRoles() {
-		roleRepo.save(new Role(Roles.Normal.name(), Roles.Normal.DESCRIPTION));
+		roleRepo.save(new Role(Roles.Admin.name(), Roles.Admin.DESCRIPTION));
+		roleRepo.save(new Role(Roles.Salesperson.name(), Roles.Salesperson.DESCRIPTION));
+		roleRepo.save(new Role(Roles.Editor.name(), Roles.Editor.DESCRIPTION));
+		roleRepo.save(new Role(Roles.Shipper.name(), Roles.Shipper.DESCRIPTION));
 	}
 
 	@Override public ArrayList<Integer> getRolesIds() {

@@ -7,10 +7,10 @@ import javax.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.webappdemo.www.entity.Role;
-import com.webappdemo.www.entity.User;
-import com.webappdemo.www.repo.RoleRepo;
-import com.webappdemo.www.repo.UserRepo;
+import com.fst.bazaar.entity.Role;
+import com.fst.bazaar.entity.User;
+import com.fst.bazaar.repo.RoleRepo;
+import com.fst.bazaar.repo.UserRepo;
 
 @Service
 @Transactional
@@ -27,8 +27,8 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User findByUsername(String username) {
-		return userRepo.findByUsername(username);
+	public User findByEmail(String email) {
+		return userRepo.findByEmail(email);
 	}
 
 	@Override
@@ -48,8 +48,8 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public void addRoleToUser(String username, String roleName) {
-		User user = userRepo.findByUsername(username);
+	public void addRoleToUser(String email, String roleName) {
+		User user = userRepo.findByEmail(email);
 		Role role = roleRepo.findByName(roleName);
 		user.getRoles().add(role);
 	}

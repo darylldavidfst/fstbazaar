@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.webappdemo.www.entity.User;
-import com.webappdemo.www.repo.UserRepo;
+import com.fst.bazaar.entity.User;
+import com.fst.bazaar.repo.UserRepo;
 
 @Service
 @Transactional
@@ -24,11 +24,11 @@ public class UserDetailsImplementation implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepo.findByUsername(username);
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		User user = userRepo.findByEmail(email);
 
 		if (user == null) {
-			throw new UsernameNotFoundException(username);
+			throw new UsernameNotFoundException(email);
 		}
 
 		List<SimpleGrantedAuthority> authorities = user.getRoles()
@@ -37,6 +37,6 @@ public class UserDetailsImplementation implements UserDetailsService {
 				.collect(Collectors.toList());
 
 		return new org.springframework.security.core.userdetails.User(
-				user.getUsername(), user.getPassword(), authorities);
+				user.getEmail(), user.getPassword(), authorities);
 	}
 }
