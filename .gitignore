@@ -6,8 +6,6 @@ target/
 !**/src/test/**/target/
 .DS_Store
 src/main/resources/develop/
-src/main/resources/staging/
-src/main/resources/product/
 
 ### STS ###
 .apt_generated
