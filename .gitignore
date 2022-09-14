@@ -4,10 +4,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-develop/
-product/
-staging/
 .DS_Store
+src/main/resources/develop/
+
 ### STS ###
 .apt_generated
 .classpath
@@ -32,8 +31,8 @@ staging/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-/src/main/resources/develop/application.properties
+
 
 ### VS Code ###
 .vscode/
-develop
+
