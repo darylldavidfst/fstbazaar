@@ -60,6 +60,9 @@ html {
     border: 0 !important;
     border-radius: 0.25rem 0 0 0.25rem !important;
 }
+td.text-center.data{
+    color: white !important;
+}
 .input_user,
 .input_pass:focus {
     box-shadow: none !important;

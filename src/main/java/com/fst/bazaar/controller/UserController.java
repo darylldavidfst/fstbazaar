@@ -14,8 +14,13 @@ import com.fst.bazaar.service.UserService;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-	@Autowired
+
 	private UserService userService;
+
+	@Autowired
+	public UserController(UserService userService){
+		this.userService = userService;
+	}
 
 	@GetMapping("/list")
 	public String listAll(Model model) {
