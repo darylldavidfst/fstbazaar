@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.webappdemo.www.entity.User;
+import com.fst.bazaar.entity.User;
+
 
 @Service
 public interface UserService {

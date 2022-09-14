@@ -2,7 +2,8 @@ package com.fst.bazaar.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.webappdemo.www.entity.Role;
+import com.fst.bazaar.entity.Role;
+
 
 public interface RoleRepo extends JpaRepository<Role, Integer> {
 

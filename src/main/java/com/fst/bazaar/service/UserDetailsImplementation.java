@@ -11,8 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.webappdemo.www.entity.User;
-import com.webappdemo.www.repo.UserRepo;
+import com.fst.bazaar.entity.User;
+import com.fst.bazaar.repo.UserRepo;
+
 
 @Service
 @Transactional

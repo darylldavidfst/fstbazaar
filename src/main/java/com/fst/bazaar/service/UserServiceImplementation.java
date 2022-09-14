@@ -7,10 +7,11 @@ import javax.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.webappdemo.www.entity.Role;
-import com.webappdemo.www.entity.User;
-import com.webappdemo.www.repo.RoleRepo;
-import com.webappdemo.www.repo.UserRepo;
+import com.fst.bazaar.entity.Role;
+import com.fst.bazaar.entity.User;
+import com.fst.bazaar.repo.RoleRepo;
+import com.fst.bazaar.repo.UserRepo;
+
 
 @Service
 @Transactional
