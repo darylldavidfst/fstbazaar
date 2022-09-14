@@ -87,24 +87,15 @@
 
 	<profiles>
 		<profile>
-			<id>develop</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			<id>dev</id>
 			<properties>
-				<resources.directory>${basedir}/src/main/resources/develop</resources.directory>
+				<activatedProperties>dev</activatedProperties>
 			</properties>
 		</profile>
 		<profile>
-			<id>staging</id>
+			<id>prod</id>
 			<properties>
-				<resources.directory>${basedir}/src/main/resources/staging</resources.directory>
-			</properties>
-		</profile>
-		<profile>
-			<id>product</id>
-			<properties>
-				<resources.directory>${basedir}/src/main/resources/product</resources.directory>
+				<activatedProperties>prod</activatedProperties>
 			</properties>
 		</profile>
 	</profiles>
@@ -128,12 +119,6 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.properties</include>
-					<include>**/*.json</include>
-					<include>**/*.yml</include>
-				</includes>
 			</resource>
 
 			<resource>
