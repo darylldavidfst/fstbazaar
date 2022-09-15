@@ -1,24 +1,28 @@
 package com.fst.bazaar.entity;
 
-import java.util.Set;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users")
+@Table(name = "account_users")
+@EntityListeners(AuditingEntityListener.class)
 @Data
 @NoArgsConstructor
 public class User {
@@ -27,32 +31,29 @@ public class User {
 	@Column(name = "id")
 	private int id;
 
+	@Column(name = "login_enabled")
+	private boolean loginEnabled;
+
 	@Column(name = "email")
-	@Size(min = 8, max = 128, message = "Email should be 8-128 characters")
+	@Size(min = 8, max = 255, message = "Email should be 8-255 characters")
 	@NotNull
 	private String email;
-
-	@Column(name = "enabled")
-	private boolean enabled;
-
-	@NotBlank(message = "Firstname is required")
-	@Size(min = 2, max = 45, message = "Firstname should be 2-45 characters")
-	@Column(name = "first_name")
-	private String firstName;
-
-	@NotBlank(message = "Lastname is required")
-	@Size(min = 2, max = 45, message = "Lastname should be 2-45 characters")
-	@Column(name = "last_name")
-	private String lastName;
 
 	@Column(name = "password")
 	@NotBlank(message = "Password is required")
 	private String password;
 
-	@Column(name = "photo")
-	@Size(max = 64)
-	private String photo;
+	@Column(name = "role")
+	private String role;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Role> roles;
+	@Column(name = "created_at")
+	@CreatedDate
+	private Date createdAt;
+
+	@Column(name = "updated_at")
+	@LastModifiedDate
+	private Date updatedAt;
+
+	@Column(name = "deleted_at")
+	private Date deletedAt;
 }

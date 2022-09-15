@@ -26,13 +26,11 @@ class UserServiceTest {
 
 		User root = new User();
 		root.setEmail(newEmail);
-		root.setEnabled(true);
-		root.setFirstName("Super");
-		root.setLastName("User");
+		root.setLoginEnabled(true);
+		root.setRole(Roles.Admin.name());
 		root.setPassword(newEmail);
 
 		userService.saveUser(root);
-		userService.addRoleToUser(newEmail, Roles.Admin.name());
 
 		User user = userService.findByEmail(newEmail);
 		Assertions.assertThat(newEmail).isEqualTo(user.getEmail());
