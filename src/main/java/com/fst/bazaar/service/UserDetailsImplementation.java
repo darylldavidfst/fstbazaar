@@ -29,7 +29,7 @@ public class UserDetailsImplementation implements UserDetailsService {
 			throw new UsernameNotFoundException(email);
 		}
 
-		System.out.println("here");
+		System.out.println(user);
 
 		List<SimpleGrantedAuthority> authorities = user.getRoles()
 				.stream()
