@@ -76,6 +76,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>5.11.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator-core</artifactId>
 			<version>0.50</version>
 		</dependency>
@@ -128,12 +133,6 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.properties</include>
-					<include>**/*.json</include>
-					<include>**/*.yml</include>
-				</includes>
 			</resource>
 
 			<resource>

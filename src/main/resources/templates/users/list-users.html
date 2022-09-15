@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: header('User Management')"/>
+
+<body>
+<div class="container-fluid">
+    <div th:replace="nav :: menu"></div>
+    <div>
+        <h2 class="text-center color-white">Manage Users</h2>
+        <hr>
+        <a class="btn btn-outline-success btn-add" th:href="@{/users/showFormForAdd}" role="button">
+            Create User
+            <i class='fas fa-user-plus'></i>
+        </a>
+    </div>
+    <div th:if="${message != null}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered table-striped">
+            <thead style="background-color: #ffffff">
+            <tr>
+                <th class="text-center">Email</th>
+                <th class="text-center">First Name</th>
+                <th class="text-center">Last Name</th>
+                <th class="text-center">Roles</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody id="myTable">
+            <tr th:each="user : ${listUsers}">
+                <td class="text-center data">[[${user.email}]]</td>
+                <td class="text-center data">[[${user.firstName}]]</td>
+                <td class="text-center data">[[${user.lastName}]]</td>
+                <td class="text-center data">[[${user.roles}]]</td>
+
+                <td>
+                    <a class="fas fa-edit colorWarning" title="Update User"
+                       th:href="@{/users/showFormForUpdate(userId=${user.id})}">
+                    </a>
+                    &nbsp
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade text-center" id="confirmModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Delete user</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <span id="confirmText"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <a class="btn btn-success" href="" id="yesBtn">Yes</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center m-1" th:if="${totalItems > 0}">
+        <span>Showing users # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+    </div>
+    <div class="text-center m-1 text-white" th:unless="${totalItems > 0}">
+        <span>No user found</span>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".link-delete").on("click", function (e) {
+            e.preventDefault();
+            link = $(this);
+            userEmail = link.attr("userEmail");
+            $("#yesBtn").attr("href", link.attr("href"));
+            $("#confirmText").text("Do you want to delete user: " + userEmail);
+            $("#confirmModal").modal();
+        })
+    })
+</script>
+</html>

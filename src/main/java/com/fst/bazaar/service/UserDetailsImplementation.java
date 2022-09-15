@@ -29,6 +29,8 @@ public class UserDetailsImplementation implements UserDetailsService {
 			throw new UsernameNotFoundException(email);
 		}
 
+		System.out.println(user);
+
 		List<SimpleGrantedAuthority> authorities = user.getRoles()
 				.stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName()))
