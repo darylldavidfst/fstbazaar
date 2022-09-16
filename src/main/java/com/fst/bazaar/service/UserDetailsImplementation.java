@@ -1,5 +1,6 @@
 package com.fst.bazaar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -29,10 +30,8 @@ public class UserDetailsImplementation implements UserDetailsService {
 			throw new UsernameNotFoundException(email);
 		}
 
-		List<SimpleGrantedAuthority> authorities = user.getRoles()
-				.stream()
-				.map(role -> new SimpleGrantedAuthority(role.getName()))
-				.toList();
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new SimpleGrantedAuthority(user.getRole()));
 
 		return new org.springframework.security.core.userdetails.User(
 				user.getEmail(), user.getPassword(), authorities);
