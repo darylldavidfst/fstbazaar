@@ -92,12 +92,12 @@
 
 	<profiles>
 		<profile>
-			<id>develop</id>
+			<id>dev</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<resources.directory>${basedir}/src/main/resources/develop</resources.directory>
+				<resources.directory>${basedir}/src/main/resources/dev</resources.directory>
 			</properties>
 		</profile>
 		<profile>
@@ -107,9 +107,9 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>product</id>
+			<id>prod</id>
 			<properties>
-				<resources.directory>${basedir}/src/main/resources/product</resources.directory>
+				<resources.directory>${basedir}/src/main/resources/prod</resources.directory>
 			</properties>
 		</profile>
 	</profiles>
